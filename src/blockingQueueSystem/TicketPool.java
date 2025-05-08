@@ -7,6 +7,8 @@ import java.util.concurrent.ArrayBlockingQueue;
 public class TicketPool {
 	private int maxCapacity;
 	private final BlockingQueue<String> ticketQueue;
+	private int ticketsCreated = 0;
+	private int ticketsConsumed = 0;
 
 	public TicketPool(int capacity) {
 		this.maxCapacity = capacity;
@@ -43,6 +45,22 @@ public class TicketPool {
 	public void displayTickets() {
 		System.out.println("Available no. of Tickets : " + ticketQueue.size());
 
+	}
+	
+	public void ticketWasCreated() {
+		this.ticketsCreated++;
+	}
+	
+	public void ticketWasConsumed() {
+		this.ticketsConsumed++;
+	}
+	
+	public int totalTicketsCreated() {
+		return ticketsCreated;
+	}
+	
+	public int totalTicketsConsumed() {
+		return ticketsConsumed;
 	}
 
 }

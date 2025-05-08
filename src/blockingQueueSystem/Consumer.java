@@ -20,6 +20,7 @@ public class Consumer implements Runnable{
 			String ticket = ticketPool.buyTicket();
 			if(ticket != null) {
 				System.out.println("Consumer "+consumerNo+" bought Ticket : "+ ticket);
+				this.ticketPool.ticketWasConsumed();
 				
 			}
 			sleep(cooldownTime*1000);

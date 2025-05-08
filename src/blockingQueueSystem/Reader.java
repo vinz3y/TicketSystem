@@ -12,7 +12,7 @@ public class Reader implements Runnable{
 	public void run() {
 		while(!Thread.currentThread().isInterrupted()) {
 			ticketPool.displayTickets();
-			sleep(1000);	//Turns inactive after sleeping
+			sleep(500);	//Turns inactive after sleeping
 		}
 	
 	}

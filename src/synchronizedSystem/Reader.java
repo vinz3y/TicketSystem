@@ -13,7 +13,7 @@ public class Reader implements Runnable{
 	public void run() {
 		while(running) {
 			ticketPool.displayTickets();
-			sleep(1000);	//Turns inactive after sleeping
+			sleep(500);	//Turns inactive after sleeping
 		}
 	
 	}

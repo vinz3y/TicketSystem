@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+
 public class SimulationManager {
 	
 	private final TicketPool ticketPool ;
 	private final List<Thread> threads = new ArrayList<>();
+	
+
 	Scanner scanner = new Scanner(System.in);
 	
 	
@@ -52,9 +55,14 @@ public class SimulationManager {
 		
 	}
 	
+	
 	public void stopSimulation() {
 		for (Thread thread:threads) {
 			thread.interrupt();
 		}
+	}
+	
+	public TicketPool getTicketPool() {
+		return ticketPool;
 	}
 }

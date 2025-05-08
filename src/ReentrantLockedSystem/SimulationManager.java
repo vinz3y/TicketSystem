@@ -8,6 +8,8 @@ public class SimulationManager {
 	
 	private final TicketPool ticketPool ;
 	private final List<Thread> threads = new ArrayList<>();
+	private int threadsCreated = 0;
+	private int threadsConsumed = 0;
 	Scanner scanner = new Scanner(System.in);
 	
 	
@@ -51,6 +53,11 @@ public class SimulationManager {
         }
 		
 	}
+	
+	public TicketPool getTicketPool() {
+		return ticketPool;
+	}
+	
 	
 	public void stopSimulation() {
 		for (Thread thread:threads) {

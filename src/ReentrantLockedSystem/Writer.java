@@ -15,6 +15,7 @@ public class Writer implements Runnable{
 			boolean ticketAdded = ticketPool.addTicket("SpecialTicket#"+System.currentTimeMillis() );
 			if(ticketAdded) {
 				System.out.println("Writer added Ticket");
+				this.ticketPool.ticketWasCreated();
 				sleep(5000); //Turns inactive after adding the ticket to the pool
 			}
 		}

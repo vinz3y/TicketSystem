@@ -6,6 +6,8 @@ import java.util.List;
 public class TicketPool {
 	private final List<String> tickets = new LinkedList<>();
 	private int maxCapacity;
+	private int ticketsCreated = 0;
+	private int ticketsConsumed = 0;
 	
 	public TicketPool (int capacity ) {
 		this.maxCapacity = capacity;
@@ -36,6 +38,22 @@ public class TicketPool {
 	
 	public synchronized void displayTickets () {
 		System.out.println("Available no. of TIckets : " + tickets.size() );
+	}
+	
+	public void ticketWasCreated() {
+		this.ticketsCreated++;
+	}
+	
+	public void ticketWasConsumed() {
+		this.ticketsConsumed++;
+	}
+	
+	public int totalTicketsCreated() {
+		return ticketsCreated;
+	}
+	
+	public int totalTicketsConsumed() {
+		return ticketsConsumed;
 	}
 
 }

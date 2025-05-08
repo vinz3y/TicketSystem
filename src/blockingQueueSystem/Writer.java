@@ -1,4 +1,6 @@
 package blockingQueueSystem;
+import java.util.Random;
+
 
 public class Writer implements Runnable{
 	
@@ -11,9 +13,11 @@ public class Writer implements Runnable{
 	@Override
 	public void run() {
 		while(!Thread.currentThread().isInterrupted()) {
-			boolean ticketAdded = ticketPool.addTicket("SpecialTicket#"+System.currentTimeMillis() );
+			Random rand = new Random();
+			boolean ticketAdded = ticketPool.addTicket("SpecialTicket#"+System.currentTimeMillis()+rand.nextInt(100) );
 			if(ticketAdded) {
 				System.out.println("Writer added Ticket");
+				this.ticketPool.ticketWasCreated();
 				sleep(5000); //Turns inactive after adding the ticket to the pool
 			}
 		}

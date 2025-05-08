@@ -1,4 +1,5 @@
 package blockingQueueSystem;
+import java.util.Random;
 
 public class Producer implements Runnable{
 	
@@ -17,9 +18,11 @@ public class Producer implements Runnable{
 	public void run() {
 		while(!Thread.currentThread().isInterrupted()) {
 			long ticketNo = System.currentTimeMillis();
-			boolean ticketAdded = ticketPool.addTicket("Ticket#"+ ticketNo);
+			Random rand = new Random();
+			boolean ticketAdded = ticketPool.addTicket("Ticket#"+ Integer.toString(producerNo)+ticketNo+rand.nextInt(1000));
 			if (ticketAdded) {
-				System.out.println("Producer "+ producerNo + " addded Ticket : Ticket#"+ticketNo);
+				System.out.println("Producer "+ producerNo + " addded Ticket : Ticket#"+Integer.toString(producerNo)+ticketNo+rand.nextInt(1000));
+				this.ticketPool.ticketWasCreated();
 			}
 			sleep(cooldownTime*1000);
 		}

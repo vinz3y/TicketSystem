@@ -7,6 +7,8 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 public class TicketPool {
 	private final List<String> tickets = new LinkedList<>();
 	private int maxCapacity;
+	private int ticketsCreated = 0;
+	private int ticketsConsumed = 0;
 	private final ReentrantReadWriteLock rwLock = new ReentrantReadWriteLock();
 
 	public TicketPool(int capacity) {
@@ -57,6 +59,22 @@ public class TicketPool {
 		} finally {
 			rwLock.readLock().unlock();
 		}
+	}
+	
+	public void ticketWasCreated() {
+		this.ticketsCreated++;
+	}
+	
+	public void ticketWasConsumed() {
+		this.ticketsConsumed++;
+	}
+	
+	public int totalTicketsCreated() {
+		return ticketsCreated;
+	}
+	
+	public int totalTicketsConsumed() {
+		return ticketsConsumed;
 	}
 
 }
